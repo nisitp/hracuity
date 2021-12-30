@@ -1,0 +1,38 @@
+html body {
+  .news-item {
+    &.teaser {
+      
+      > a.item-content {
+        display: grid;
+        
+      }
+      
+      .news-item-date {
+        @include set-sizes(s);  
+        color: get-col(gray);
+      }
+      
+	    a.more-link {
+		    @include space(margin,left,.5);
+	        color: get-col(orange);
+	        text-decoration: underline;
+	    }
+	    
+      .featured-logo {
+        @include space(margin, bottom, 1);
+
+        text-align: center;
+        
+        @include bp(m) {
+          img {
+            min-height: 100px;
+            max-width: 80%;
+            width: auto;
+            height: auto;
+            object-fit: contain; // maintain aspect ratio
+          }
+        }
+      }
+    }
+  }
+}

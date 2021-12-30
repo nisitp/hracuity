@@ -1,0 +1,90 @@
+// This file contains (most) styling overrides for legacy components -- ideally, over time, these should be updated to cleaner rebuilt components. 
+
+body.full-width-layout {
+  // the feature boxes thing
+  .two-column-with-image .grid-boxes {
+    .boxes .box:nth-child(1) {
+      img {
+        width: 100px;
+        height: auto;
+        margin: 0;
+      }
+    }
+            
+    .boxes .box:nth-child(2) {
+      h3 {
+        @extend %h4;
+      }
+    }
+
+  }
+  
+  .grid.align-center .grid-boxes {
+    .boxes img {
+      margin: 0 auto !important;
+    }
+  }
+  
+}
+
+body .grid-boxes {
+  .box img {
+    height: auto;
+  }
+}
+
+// body .image-box img, 
+body .custom-img img { width: 100%; height: auto; }  
+
+
+body.has-cta .hs_cos_wrapper_type_widget_container .cta-container:last-child {
+  background-color: #265F82; // to bleed into the footer
+  	.hs_cos_wrapper_widget > div {
+	  	background-color: white;
+  	}
+}
+
+body.has-cta .cta.with-background {  
+	background-color: transparent;
+  // @include slant(bottom);
+  
+  a.button {
+	  @extend %medium-button;
+	  text-transform: none;
+  }
+}
+
+
+/* big grids with backgrounds */
+
+.theme-2019 .grid.with-background {
+  
+  /* in future might want to update these */
+   h2 {
+      @extend %h4;
+   }
+   h3 {
+     @extend %h6;
+   }
+   
+  &.reverse-type-color {
+    h2, h3, h4 {
+      color: white;
+    }
+  }
+}
+
+
+
+.form-heading h3 {
+  
+}
+
+.hs_cos_wrapper_type_rich_text h2 {
+  
+}
+
+
+html body .post img {
+  max-width: 100%;
+}

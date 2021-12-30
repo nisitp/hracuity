@@ -1,0 +1,220 @@
+.vertical-tabs {
+  @extend %fixWidth;
+  ul, li { list-style: none; }
+
+  @include bp(0, s) {    
+    li {
+      @include space(margin, bottom, $gutter);
+    }
+  }
+  @include bp(m) {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    grid-template-areas: "nav content";
+    @include space(margin, bottom);
+  }
+  
+  
+  ul.tabs {
+    margin: 0; 
+    padding: 0;
+    
+    @include bp(m) {
+      grid-area: nav;
+      display: grid; // get the LIs to span the height
+    }
+    
+    li {
+      cursor: pointer;
+      text-align: left;
+      
+      @include bp(m) {
+        margin: 0;        
+        padding: $gutter*.5;
+        
+  //      background: get-col(lightestgray);
+        transition: max-height 2s;
+        transition-delay: 0s, 0s, 0s, 400ms, 400ms;
+        
+//        @include space(margin, bottom, $gutter*.5);      
+      }
+      
+      .feature__headline {
+        @extend %h6;
+        
+        @include bp(0, s) {
+          text-align: left;
+        }
+        color: lighten(get-col(primary, $brand-colors), 10%);
+        
+        margin-bottom: 0 !important;
+        display: block;
+        
+        text-decoration: none;
+//        color: get-col(gray); // TBD      
+
+        position: relative;
+        padding-left: 35px;
+        .feature__icon {
+          color: get-col(green);
+          font-family: "Font Awesome 5 Pro";
+          position: absolute;
+          left: 0;
+        }
+      }
+      
+      .feature__description {
+//        display: none;
+        padding-left: 35px;        
+//        max-height: 0;
+
+        @include set-sizes(s);  
+        
+        @include bp(m) {
+//          @include set-sizes(m);            
+          color: lighten(get-col(black),30%);
+          transition-property: max-height;
+          transition-delay: 0;
+          transition-duration: 500ms, 900ms, 400ms;
+        }
+        
+        p {
+          margin: 0; padding: 0;
+        }
+      }
+
+ 
+      @include bp(m) {     
+        position: relative;
+        right: -2px;
+        z-index: 2;
+        &:hover, &.selected {       
+          .feature__headline, .feature__description {
+            color: get-col(primary, $brand-colors);
+          }                
+        }
+      }
+
+      .mobile-feature-image { 
+        @include space(margin, top, .5);
+        @include space(margin, bottom, 1.5);        
+      }
+      
+      @include bp(m) {
+
+        .mobile-feature-image { 
+          display: none;
+        }
+        
+        &.selected {            
+//          @extend %shadowed;                                          
+          background: get-col(lightgray);        
+          .feature__description {
+            height: auto;
+            max-height: 500px;          
+          }          
+        }
+      }
+    }
+    
+  }
+  
+  ul.content {
+    padding: 10px;
+    margin: 0;
+    
+    @include bp(0, s) { 
+      display: none;
+    }
+    grid-area: content;
+    position: relative;  
+        
+    li {
+      max-height: 0;
+      opacity: 0;
+      margin: 0;
+      padding: 0;
+      
+      &.selected {
+        opacity: 1;
+        transition: opacity 2s;
+        max-height: none;
+      }
+      
+      img {
+        position: relative;
+        top: 0; left: 0;
+        width: 100%;
+      }
+    }    
+  }  
+  
+}
+
+/*
+@include bp(m) {    
+  .vertical-tabs.zebra-alt {
+  
+    ul.tabs li {
+      border: 2px solid transparent; // to prevent jumping
+    }
+    ul.tabs li.selected {
+      background: white !important;    
+      border: 2px solid #275F82;
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;      
+      border-right: none;
+      padding-right: $gutter*.5 + 2px; // prevent jumping from disappearing border
+    }
+    ul.content {
+      background: white;      
+      border: 2px solid #275F82;    
+      border-radius: 8px;      
+
+      img {
+        border-radius: 8px;
+      }      
+      @at-root .vertical-tabs.first-active ul.content {
+        border-top-left-radius: 0;
+      }
+      @at-root .vertical-tabs.last-active ul.content {      
+        border-bottom-left-radius: 0;
+      }
+      
+    }
+  }
+}
+*/
+
+@include bp(m) {
+  // To-do: integrate into the above code better.
+  .vertical-tabs {
+    grid-column-gap: $gutter;
+    align-items: center;
+  
+    ul.tabs li.selected {
+      border: none;
+      border-radius: 8px;
+      background-color: get-col(blue) !important;
+      *, .feature__headline {
+        color: white;
+      }
+    }
+    
+    ul.content {
+      border: none;
+      padding: 0;
+      background: transparent !important;
+      
+      img {
+        border-radius: 8px;
+      }
+    }
+  }
+}
+/*
+background: #FAFAFA;
+box-shadow: 0 2px 10px 0 rgba(0,0,0,0.15);
+transform: rotate(-90deg);
+background: #8AC442;
+*/

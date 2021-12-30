@@ -1,0 +1,73 @@
+html body {
+  .media-section {
+    .container {
+      padding: 0;
+      margin-bottom: $gutter;      
+    }
+    
+    &.small-images {
+      @extend %tight-box;
+
+      .image-container { 
+        width: 25%;
+        @include bp(m) {
+          @include space(padding, all, 1);        
+        }
+        img {
+          max-width: 100px;
+          height: auto;
+          @include bp(m) {          
+            max-width: 80%;
+          }            
+          @include bp(xl) {
+            max-width: 150px;
+          }
+        }
+      }
+      .content-container {
+        width: 75%;
+      }
+
+            
+    }
+    
+  }
+  
+  .media-text {
+    .boxes {
+      .box {
+        @include bp(s) {
+          text-align: left; 
+        }
+        h2 {
+          @extend %h4;
+
+          text-align: center;
+          @include bp(s) {
+            text-align: left; 
+          }
+          
+          font-weight: getFontParam(weights, medium);        
+        }
+        
+        img {
+          height: auto;
+        }
+      }
+    }
+
+    
+  }
+  
+  .grid.align-center .media-text {
+    .boxes .box {
+      text-align: center;
+      * { text-align: center; }
+      
+      img {
+        margin: 0 auto;
+      }
+    }
+  }
+  
+}

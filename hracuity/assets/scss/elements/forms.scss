@@ -1,0 +1,70 @@
+%form-styles {  
+  label, .hs-form-field label {
+    color: get-col(black);
+  }
+  input, select {
+    border-color: get-col(black);
+    border-radius: 5px;
+  }
+  
+  input[type=checkbox] {
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    -o-appearance:none;
+    width: 16px; height: 16px;
+    border: 1px solid get-col(orange);
+    margin-right: .5em;
+
+    vertical-align: middle;
+    &:checked::before {
+      content: "\2714";        
+      color: get-col(orange);
+      padding: 0 2px 2px 2px;
+    }
+  }
+  
+  
+  .hs-form-field .hs-error-msgs {
+    margin-top: -12px;
+  }
+  
+  label.hs-error-msg {
+    margin-top: -4px;
+    color: get-col(red);
+    font-style: italic;
+    @include set-sizes(xs);
+  }
+}
+
+html body .footer-form form {
+  @extend %form-styles;
+  
+  input[type=text],input[type=email], select {
+	  width: 85vw;
+	  @include bp(m) {
+		width: 40vw;
+	  }
+	  @include bp(l) {	  
+		width: 30vw;		  
+	  }
+//	  max-width: 350px;
+  }
+}
+
+/* Sidebar Forms */
+.body-container .row-fluid-wrapper .span12.widget-span .span4 form {
+  margin-left: -15px; // compensate for parent
+  margin-right: -15px;
+  background-color: white;
+  padding: 20px;
+  
+  .legal-consent-container p {
+    font-size: 12px;
+  }
+  
+  .actions { text-align: center; }
+  .actions input {
+    font-family: getFontParam(families, default);
+    text-transform: none;
+  }
+}

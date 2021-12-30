@@ -1,0 +1,65 @@
+html body {  
+  .header-bg > .row-fluid-wrapper { background: white; position: relative; }
+  
+  .custom-menu-primary ul.hs-menu-children-wrapper {
+    width: auto !important;
+  }
+
+  .custom-menu-primary .hs-menu-wrapper > ul ul.hs-menu-children-wrapper {
+	  @include has-full-pseudo();
+	  padding-top: 10px;
+	  &::before {
+	  	box-shadow: 0 -6px 0 #fff, 0 1px 6px rgba(0,0,0, .35); 
+	  	top: 10px;
+	  	height: calc(100% - 10px);
+//	  	border-top: 10px solid white;
+	  }
+	  
+  }
+  
+  @include bp(0, xxs) {
+    .custom-menu-primary {
+      .flyouts > ul > li:last-child {
+        @include space($type: padding, $direction: topbottom);
+        a {
+          text-align: center;
+        }
+      }
+    }
+  }
+  
+  
+  .custom-menu-primary .hs-menu-wrapper > ul > li * {
+    font-family: getFontParam(families, default);  
+    font-weight: getFontParam(weights, medium);
+    color: get-col(black);
+  }
+
+  .custom-menu-primary .hs-menu-wrapper > ul > li:last-child > a {
+	  z-index: 11; // be above drop-downs
+    // demo request
+    * {
+      color: white !important;    
+    }
+    @extend %medium-button;
+
+    margin: 0 .5em !important;
+    text-transform: none !important;
+    padding: 16px 12px !important;
+
+    &::after {
+      content:"";
+      display: none;
+    }
+  }
+  
+  .one-column-text .content-wrapper.container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    
+    .container {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+  }
+}

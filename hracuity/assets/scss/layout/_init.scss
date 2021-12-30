@@ -1,0 +1,30 @@
+@import "navigation";
+@import "footer";
+@import "widget";
+html body .container, %fixWidth {
+
+  max-width: 90vw;
+  margin: 0 auto;
+  
+  @include bp(m) {
+    max-width: 110rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0 !important;
+    padding-right: 0 !important;  
+  }
+}
+
+
+// classes exposed to hubspot editor
+html body .with-slant {
+	@include slant($direction: up, $position: both);
+	background-color: get-col(lightgray);
+}
+
+html body .grid.remove-padding {
+	@include space(padding, topbottom, 0);
+}
+html body .grid.small-padding {
+	@include space(padding, topbottom, 1);
+}

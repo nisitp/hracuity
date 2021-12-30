@@ -1,0 +1,76 @@
+.hs-cta-wrapper .hs-cta-img {
+  display: none; // mitigate the "flicker" of swapping the image out for a button.
+}
+
+a.button, %big-button {
+  background-image: linear-gradient(130deg, #F9956C 0%, #F05C3A 100%);
+  border-radius: 4px;
+  color: #FFFFFF;
+  box-shadow: none;
+  text-transform: none;   
+  text-decoration: none !important;    
+  transition: none !important;
+}
+
+.cta a.button, %big-button {
+  @include space(margin, top, .5);
+  @include space(margin, bottom, 1);
+  @include space(padding, all, .5);
+  @include space(padding, leftright);    
+  font-size: 26px; // TBD
+
+  .theme-2019 & {      
+    &::after {
+      @extend %fa-icon;
+      @extend .far;
+      padding-left: .25em;      
+      content: fa-content($fa-var-arrow-right);      
+      font-size: 80%;
+      color: white;
+      
+      width: .7em;
+      height: .7em;
+    }
+    &:hover::after {
+      padding-left: .5em;
+      transition: padding .2s ease-out;      
+    }
+  }
+}
+
+%medium-button {
+  @extend %big-button;
+  font-size: 16px;
+}
+
+
+// legacy overrides
+.full-width-button {
+  @extend %big-button;
+}    
+
+a.read-more {
+  /* because the new buttons are bigger than the old ones, and the old theme positioned them absolute, may need tweaks to other areas
+     to make these look right. 
+  */
+  
+  @extend %medium-button;
+  margin-top: 1em;
+}
+
+a.arrow {
+  
+  @include icon("arrow-right", $type: r, $color: inherit, $pos: "after");
+  &::before {
+    display: none;
+  }
+  &::after {
+    content: "\f061" !important;
+    background-image: none !important;
+    width: 20px;
+    height: 20px;
+    color: white;
+    display: inline-block;
+  }
+  
+}

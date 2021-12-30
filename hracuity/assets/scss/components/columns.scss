@@ -1,0 +1,44 @@
+html body .column-container {
+
+  @include space(padding, all, 1, $important: true);
+  
+  &.mobile-columns .columns {
+    @include bp(0, s) {
+      // any improvements to this welcome!
+        @include make-grid(2);
+    }
+  }
+  
+  .columns {
+    text-align: left;
+  
+    @include bp(m) {
+      @for $var from 1 through 8 {
+        &-#{$var} {
+          @include make-grid($var);
+        }        
+      }            
+    }
+  
+    > div {
+      @include bp(0, s) {
+        @include space($direction: bottom); // add margin to bottoms of columns
+      }
+    }      
+  }
+
+  &.feature-first .columns {
+      &.columns-2 {
+        grid-template-columns: 2fr 1fr;
+      }
+      &.columns-3 {
+        grid-template-columns: 1.5fr 1fr 1fr; 
+      }      
+	  
+	  ul li {
+	  	font-weight: getFontParam(weights, medium);
+	  }
+  }    
+
+  
+}

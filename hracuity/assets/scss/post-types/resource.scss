@@ -1,0 +1,31 @@
+.resource {
+  .resource-type {
+    text-transform: uppercase;
+    font-size: 12px; // TBD
+    color: get-col(gray);
+  }  
+  &.mini-teaser {
+    .resource__title {
+      @include space(margin, bottom,.5);
+      a {
+        @extend %simple-link;
+      }
+    }
+  }
+}
+
+
+.latest-resources {
+  .resource {
+    @include space(margin, topbottom);
+  }
+}
+
+// legacy
+
+.resources.post-item, .resources-container {
+  h3 {
+   	@include set-sizes(s);   
+  }
+}
+  

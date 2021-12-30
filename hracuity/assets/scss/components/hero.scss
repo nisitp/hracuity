@@ -1,0 +1,301 @@
+%banner-gradient {
+    @include has-full-pseudo();
+  
+    &::before {
+//     background: url(https://www.hracuity.com/hubfs/2019/hero/hracuity-blue-header.png);
+//     background: url(https://cdn2.hubspot.net/hubfs/2930928/2019/hero/hracuity-blue-header-2-min.png);
+     opacity: .5;
+     
+     background-image: linear-gradient(90deg, #8AC442 0%, #4E98B8 48%, #265F82 100%);      
+     background-position: top left !important;
+     background-size: cover !important;
+     background-repeat: no-repeat;      
+     z-index: 1 !important;
+    }
+
+    &::after {   
+      content: " ";
+      display: block;  
+      position: absolute;
+      width: 100%; height: 100%;
+      background: rgb(8, 57, 89);
+      opacity: .9;
+      z-index: 0;      
+    }
+    
+    .front &::after, &[style*="blue"]::after {
+      display: none;
+    }
+  
+}
+
+html body {
+
+  &.front .hero {
+    background: transparent;
+  }  
+  
+  .hero {
+    p, a, h1, h2, h3 { // will need to revisit if we ever have FA in the hero
+      font-family: getFontParam(families, default) !important;
+    }
+    
+    position: relative;
+    overflow: visible;
+    display: grid; // fixes the gap for legacy pages for some reason
+    @include space(padding, topbottom, 2);    
+    @include space(padding, leftright, 2vw);
+        
+    @include bp(l) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    
+
+//    background: transparent;
+    
+    .hero--inner {
+      @extend %fixWidth;
+      position: relative;
+      z-index: 3;
+      
+      @include bp(m) {
+        @include space(padding, bottom, $gutter * 5);        
+      }
+
+    }
+    
+    h2 {
+      @extend %h3;
+      font-weight: getFontParam(weights, light);
+      @include space(margin, bottom, $gutter);
+      @include set-sizes(ml);
+    }
+    
+    &--inset-image {
+            
+      img {
+        max-width: 80vw;
+        margin: 0 auto;
+        height: auto;
+        @include bp(m) {
+          max-width: 450px; 
+        }
+      }
+      
+      @include bp(m) {
+        position: absolute;
+        z-index: 2;
+        top: auto;
+        bottom: -7vw;
+        left: 0;                
+      }
+      @include bp(xl) {      
+        bottom: -4vw;
+      }
+    }
+
+  }
+  &.front .hero {
+    @include has-full-pseudo();
+    z-index: 2;
+    
+    &::before {    
+      z-index:1; 
+
+      background-image: linear-gradient(170deg, #8AC442 0%, #4E98B8 48%, #265F82 100%);      
+      background-size: cover;
+      background-repeat: no-repeat;
+      @include slant(bottom);            
+      position: absolute !important; 
+
+    }
+    h1, h2, h3 { 
+      color: white;
+      margin-bottom: 0.5em;
+    }
+    
+  }
+}
+
+
+/* Legacy overrides */
+
+.hero, .banner-wrapper, .blog-banner-wrapper, .banner-section {
+  
+  * { mix-blend-mode: normal !important; z-index: 2;}
+  
+  .overlay {
+    @extend %fixWidth;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .overlay .headline, h1 { 
+    @extend %h1;
+    color: white;
+    @include set-sizes(xxl, $important: true);
+    width: 100%;
+    text-align: left;
+    margin-bottom: $gutter/2 !important;
+  }
+  
+  .front & h1 {
+    text-align: center;
+  }
+  
+  .content.in-overlay{
+	position: relative; 
+  }
+   
+  .content .page-center, .content.in-overlay .container {
+    @include space(padding, all, 0, $important: 1); 
+    @include space(padding, top, 2, $important: 1); // e.g. blog post - non "in-overlay"   
+    @include space(padding, bottom, 1, $important: 1);    
+  }
+  
+  &.resource-page {
+//    @include space(margin, top, 2, $important: 1); // fix weird issue on resource page
+  }
+    
+  .content.in-overlay .page-center, .content.in-overlay .container {  
+    @include space(padding, top, 0, $important: 1); 
+  }  
+
+  &.banner-wrapper {
+    @include space(padding, topbottom, 2);        
+    
+  }
+  &.without-background {
+    .overlay {
+      position: relative !important;
+      margin: 0 auto;
+      .headline {
+        opacity: 1;
+        color: white;
+      }
+    }
+  }
+  &.with-background, &.without-background {
+
+    * {
+  //    background-color: transparent;   
+      font-family: getFontParam(families, default) !important;  
+    }
+    
+    h1, .headline {
+      @include set-sizes(xl, $important: true);   
+      @include space(margin, bottom, .5);
+      @include bp(m) {
+        text-align: left;
+      }
+    }
+
+    .hs_cos_wrapper_type_cta {
+      @include bp(m) {
+        text-align: left;
+        display: block;
+      }      
+    }
+    
+    h1, .headline, .container p, .box {
+      color: white;
+    }
+    
+    .container p, .box p {
+      @include set-sizes(ml, $important: true);   
+    }
+    
+  }  
+
+  &.with-background {
+  
+    .overlay {
+      padding: 0;
+//       margin: 0;
+      min-height: 0 !important;
+      .headline {
+        margin: 0; padding: 0;
+      }
+    }
+    display: grid;
+//    background: none !important; 
+    @extend %banner-gradient;    
+    
+      
+//    @include slant(bottom);
+    padding-bottom: 0;
+
+
+    
+    
+    a.button, a.cta_button {
+	    @extend %big-button;
+    }
+
+    .headline, h1 {
+      @extend %h1; 
+      position: relative;
+//      color: get-col(black);
+      text-transform: none;
+      opacity: 1;
+      mix-blend-mode: normal;
+      letter-spacing: normal;
+      word-spacing: normal;
+      z-index: 2 !important;
+    }
+
+    .content > .container {
+      @include space(padding, top, 0);      
+      @include space(padding, bottom, 1);
+      position: relative; 
+      z-index: 3;
+      // padding-bottom: 6em;   // bring back if the slant returns
+    }
+    
+    .in-overlay, .container p {
+      @extend %h4;
+      text-align: center;
+      
+      @include bp(m) {
+        text-align: left;
+      }
+      background: none !important;
+//      color: get-col(black); // not sure where this was used?
+  //    margin-top: -30vh;
+  
+      font-weight: getFontParam(weights, light);
+   
+      
+    }
+    
+    
+  
+  
+  .content.with-background {
+//    background: none !important;
+  }
+
+  
+  
+  // fun workaround for too much space on sub-pages
+  .theme-2019 & {
+//    margin-bottom: -5em;
+  }
+}
+}
+
+html body.front .hero {
+  margin-bottom: 0 !important;
+}
+
+html body.remove-top-padding.customer-layout {
+  padding-top: inherit !important;
+}
+
+.banner-area {
+  @extend %banner-gradient;  
+  &::after {
+    display: none;
+  }
+}

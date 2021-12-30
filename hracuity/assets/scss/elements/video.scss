@@ -1,0 +1,9 @@
+.vidyard-player-container {
+	@extend %shadowed;
+	@include space(padding, all, 1);
+}
+
+.columns .vidyard-player-container {
+	box-shadow: none;
+	@include space(padding, all, 0);
+}

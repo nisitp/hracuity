@@ -1,0 +1,74 @@
+$fonts: (
+  families: (
+    default: "Poppins, helvetica, sans-serif" 
+  ),
+  weights: (
+    normal: 400,
+    medium: 500,
+    bold: 600, 
+    light: 300
+  ),
+  sizes: (
+    'xs': ( 
+      'size': 10px,
+      'leading': 1.7,
+      'multipliers': ( l: 1.2, xl: 1.3)
+    ),
+    's': (
+      'size': 14px,
+      'leading': 1.5,
+      'multipliers': ( l: 1.15)
+    ),
+    'm': (
+      'size': 16px,
+      'leading': 1.5,
+      'multipliers': ( l: 1.2)
+    ),    
+    'ml': (
+      'size': 16px,
+      'leading': 1.5,
+      'multipliers': ( m:1.1, l: 1.4, xl: 1.5)      
+    ),
+    'l': (
+      'size': 18px,    
+      'leading': 1.4,
+      'multipliers': ( m: 1.2, l: 1.4, xl: 1.75)
+    ),
+    'xl': (
+      'size': 20px,
+      'leading': 1.5,
+      'multipliers': ( m: 1.75, l: 2, xl: 2.5)
+    ),    
+    'xxl': (
+      'size': 22px,
+      'leading': 1.5,
+      'multipliers': ( m: 1.75, l: 2, xl: 2.5)
+    )  
+  )  
+);
+
+
+
+$colors: (
+  orange: #F05C3A,
+  lightorange: #F9956C,
+  darkorange: #ce3310,
+  blue: #265F82,
+  green: #8AC442,  
+  gray: #909090,
+  lightestgray: #FAFAFA,
+  lightgray: #f6f9fc,
+  black: #222222,
+  red: #FF0000
+  
+);
+
+$brand-colors: (
+  primary: get-col(blue),
+  link: get-col(blue),
+  cta: get-col(orange),
+  accent: get-col(green)
+);
+
+$gutter: 30px;
+

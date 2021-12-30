@@ -1,0 +1,6 @@
+@mixin make-grid($cols: 3, $gap: $gutter) {
+  display: grid;
+  grid-template-columns: repeat($cols, 1fr);
+  grid-column-gap: $gap;
+  grid-row-gap: $gap;
+}

@@ -1,0 +1,32 @@
+// generic
+
+html body .teaser {
+  @extend %shadowed;
+  @include space(padding, all, $gutter*.5);  
+  text-align: left;
+  
+  .teaser-image {
+    @include space(margin, all, 0-($gutter*.5)); // undo the padding
+    width: calc(100% + #{$gutter});
+  }
+  
+  .item-content {
+    @include space(padding, all, .5);
+    @include space(padding, top);
+    display: block;
+    a {
+      display: block;
+    }
+  }
+  
+  a {
+    @extend %simple-link;
+  }
+}
+
+
+// specific
+
+@import "blog";
+@import "resource";
+@import "news";

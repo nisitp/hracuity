@@ -1,0 +1,8 @@
+// classes for cos_wrapper_widget stuff
+
+.hs_cos_wrapper_widget {
+  &.zebra-alt {
+    background-color: get-col(lightgray);
+    border: 1px solid transparent; // collapse weird gap; probably there's a better way...
+  }
+}

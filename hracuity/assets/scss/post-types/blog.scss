@@ -1,0 +1,32 @@
+.blog-item {
+  &.teaser {
+    
+    .item-content {
+      display: grid;
+      grid-template-rows: 80px auto;
+    }
+    
+    .blog-link {
+      justify-self: start;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+// legacy
+
+.post-listing {
+  .blog-listing-item-content {
+    padding-bottom: $gutter*3;
+  }
+
+  h3 {
+  	@include set-sizes(m);
+  }
+}
+
+.blog-listing-wrapper.container, .latest-resources.container, .featured-news .container {
+  padding: 0;
+}

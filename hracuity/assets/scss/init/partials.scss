@@ -1,0 +1,53 @@
+%simple-link {
+  &, & a {
+    
+    @include bp(m) {
+      color: get-col(black);
+      text-decoration: none;
+      
+      &:hover {
+        color: get-col(orange);
+        text-decoration: underline;
+      }
+      
+      transition: color, .25s;
+    }
+  }
+}
+
+%shadowed, .shadowed {
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,0.15);
+  
+  &:hover {
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,0.25);    
+  }
+}
+
+.shadowed { 
+  // shouldn't really be used on its own but for expediency via hubspot editor we provide it with some basic styling
+  @include space(gutter, all);
+}
+
+%tight-box {
+  @include bp(m) {  
+    max-width: 70vw;    
+    margin: 0 auto;
+  }    
+  @include bp(l) {
+    max-width: 50vw;
+
+  }
+}
+
+%body-container {
+  // aims to reproduce .container from old stylesheets
+  
+  margin: 0 auto;
+  max-width: 110rem;
+  padding: 5em 2em;
+  width: 100%;
+
+  @include bp(m) {  
+    padding: 4em 2em;
+  }
+}

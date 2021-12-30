@@ -1,0 +1,186 @@
+.testimonial--detail {
+  @extend %fixWidth;            
+}
+.quote-box, .testimonial-container {
+//    background-image: linear-gradient(188deg, #202546 0%, #353F80 100%);
+  background: get-col(primary, $brand-colors);        
+  @include has-full-pseudo();
+
+  @include slant(top);
+//  @include space(padding, bottom, $gutter*2.5);        
+
+  @include space(padding, top, 120px, $important: true);            
+
+  
+  @include bp(s) {
+    @include space(padding, top, 16vw, $important: true);              
+  }
+  @include bp(xl) {
+    @include space(padding, top, 12vw, $important: true);              
+  }
+  @include bp(xxl) {    
+    @include space(padding, top, 10vw, $important: true);              
+  }
+  
+  @include space(margin, bottom, $gutter*3);  
+  
+  .zebra-alt & {
+    // quick hack for when it's on a zebra background
+    @include space(margin, bottom, 0);
+//    border-bottom: $gutter*3 solid white;
+  }
+  
+  &::before {
+    background-image: pattern-background(rgba(255,255,255,0.05));
+  }
+  
+  
+  .testimonial {
+    @extend %fixWidth;    
+  }
+  
+  .testimonial.inset {    
+    
+    @include bp(0, s) {
+      display: grid;
+      grid-template-rows: fit-content fit-content;
+      grid-template-areas:
+        "image"
+        "content";
+    }
+    @include bp(m) {     
+      @include make-grid(2);
+      grid-template-columns: 1fr 2fr;      
+      grid-template-areas: "image content";
+      
+      &.testimonial--inset_right {
+        grid-template-columns: 2fr 1fr;      
+        grid-template-areas: "content image";        // could be more elegant
+      }
+      
+    }
+
+    > div.testimonial--detail {
+      grid-area: content;
+    }
+    
+    > div.testimonial--inset-image {
+      grid-area: image;      
+
+      @include bp(0, s) {
+        @include space(margin, bottom, 1);
+      }
+      @include bp(m) {
+        position: absolute; z-index: 2;                
+        bottom: 0;
+        right: $gutter;
+        @include space(margin, bottom, 0-$gutter);
+
+      }
+      
+      &.circle {
+        border-radius: 50%;
+        width: 155px;
+        height: 155px;
+        border: 5px solid white;
+        background-position: center center;
+        background-size:cover !important;
+
+        @include bp(m) {        
+          bottom: calc(50% - 45px);
+        }
+        
+      }
+    }    
+  }
+      
+  .quote, p.details, .testimonial > div {
+    color: white;          
+    * { 
+      color: white;
+    }
+    margin: 0 auto;
+    text-align: left;  
+    max-width: 70%;
+    @include bp(m) {
+      max-width: 35vw; 
+    }
+    @include bp(l) {      
+      max-width: 50vw; 
+    }
+  }
+  
+  .quote, .testimonial--text h4 {
+    @extend %h3;
+    @include space(margin, bottom, $gutter);
+    
+    @at-root .testimonial--long .testimonial--text h4 {    
+      @extend %h5;
+      @include bp(xl) {
+        @include set-sizes(l);  
+      }
+    }
+    
+    position: relative;
+    &::before {
+      @include pseudo();
+      left: -50px;
+      top: 10px;
+      content: '“';
+      color: get-col(accent, $brand-colors);        
+      font-size: 125px;      
+    }
+  }
+  
+  p.details, .testimonial--attribution {
+    text-align: left;
+    .name, .title, &--name, &--title, &--company {
+      font-size: 18px; // TBD fix to use variable         
+      color: white;
+      display: inline;
+      &.name::before, &.testimonial--attribution--name::before {
+        content: '– ';
+      }
+      &.title::before, &.testimonial--attribution--title::before, &.testimonial--attribution--company::before {
+        content: ", ";
+      }
+      
+    }
+  }
+  
+  p.details+span {
+    // stray font awesome icon -- needs to be removed from template
+    display: none;
+  }
+  
+}
+
+// started moving this out to make CSS smaller
+ .testimonial-container .testimonial {
+   position: relative;
+   &.with-video {
+     .video-player-button {
+       @include icon(play, $type: r, $color: white);
+       background-image: linear-gradient(130deg, #F9956C 0%, #F05C3A 100%);
+       
+       position: absolute;
+       top: 40%;
+       width: 50px;
+       height: 50px;
+       text-align: center;
+       line-height: 50px;
+       border-radius: 50%;
+       font-size: 48px;
+       font-weight: 200;
+     }
+     
+     &:hover {
+       cursor: pointer;
+
+       .video-player-button {
+        background-image: none;
+        background-color: get-col(darkorange);       
+      }
+    }
+  }
+}

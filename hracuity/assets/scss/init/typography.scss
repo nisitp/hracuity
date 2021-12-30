@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,700,700i&display=swap');
+$fa-font-path: "https://cdn2.hubspot.net/hubfs/2930928/2019/webfonts";
+@import "../../../node_modules/@fortawesome/fontawesome-pro/scss/fontawesome";
+@import "../../../node_modules/@fortawesome/fontawesome-pro/scss/solid";
+@import "../../../node_modules/@fortawesome/fontawesome-pro/scss/regular";
+@import "../../../node_modules/@fortawesome/fontawesome-pro/scss/brands";
+
+
+%h1, %h2, %h3, %h4, %h5, %h6 {
+  margin-bottom: 1em;     
+  color: get-col(primary, $brand-colors);
+}
+%h1 { 
+  font-weight: getFontParam(weights, bold);
+  @include set-sizes(xxl);
+}
+
+
+%h2 {
+  font-weight: getFontParam(weights, medium);
+  @include set-sizes(xl);
+//  font-size: 56px;
+}
+
+%h3 {
+  font-weight: getFontParam(weights, medium);
+  @include set-sizes(xl);
+}
+
+%h4, %h5, %h6 {
+  @include set-sizes(l);  
+  display: block;
+  font-weight: getFontParam(weights, medium);    
+//  text-align: left;
+}
+
+%h4 {
+  text-transform: none;
+  @include bp(m) {
+    font-size: 32px;
+  }
+}
+
+%h6 {
+	@include set-sizes(m);
+}
+
+html body {
+  * {
+    font-family: getFontParam(families, default);
+  }
+  
+
+
+  &.front .hs_cos_wrapper_type_widget_container > .hs_cos_wrapper > .hs_cos_wrapper_widget {
+    > h1:nth-child(1),
+    > h2:nth-child(1),    
+    > h3:nth-child(1) {
+      // pad first ones in section
+      @include space(margin,top,$gutter*2);
+    }
+  }
+
+
+
+  @for $i from 1 through 6 {
+    &.theme-2019 h#{$i} {
+      @extend %h#{$i};
+      em {
+        font-family: inherit;
+      }
+    }
+  }
+  
+  
+  em {
+    font-style: italic; // oddly this is set to normal via their other stylesheet
+  }
+  
+  .body-container-wrapper {
+    a {
+      text-decoration: underline;
+      text-decoration-color: get-col(green) !important;
+      &.button {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+
+

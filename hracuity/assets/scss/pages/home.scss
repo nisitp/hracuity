@@ -1,0 +1,219 @@
+html body.front {
+  background: transparent; 
+  .body-container-wrapper {
+    background: transparent;
+    text-align: center;
+    
+    &::before {
+      @include pseudo();
+      background-image: pattern-background(#f7f7f7);
+      z-index: -1;
+      width: 100%;
+      height: 800px;
+      top: 450px;
+      box-shadow: inset 0px 0px 15vw 3vw white;
+    }
+    
+    
+
+    .media-section {        
+      
+      .box {
+        img {
+          max-width: 150px;
+          display: inline;
+        }          
+      }
+      
+      @include bp(m) {        
+        .media-text.right {
+          .box.image-container {
+            width: 25%;
+          }
+  
+          &:nth-child(1) .box.image-container {
+            text-align: right;
+          }
+          &:nth-child(2) .box.image-container  {
+            text-align: left;
+          }
+          &:nth-child(3) .box.image-container  {
+            text-align: right;
+          }        
+        }
+      }
+    }
+    
+    .hs_cos_wrapper_type_rich_text  {
+      @extend %fixWidth;
+      display: block;
+      @include space($direction: bottom);
+    }
+    
+    #section-2 .hs_cos_wrapper_widget_container  {
+      @extend %fixWidth;
+      
+      @include bp(m) {
+        @include make-grid(2);
+        grid-template-columns: 2fr 1fr;
+        grid-template-areas: "blog news"
+                             "press press";
+      }  
+      
+      .container {
+        @include space(padding, topbottom, 0);
+      }
+      
+      .see-more {
+          @include space(margin,topbottom,1);        
+      }
+      
+      > div:nth-child(3) {
+        @include bp(m) {
+          // "latest press"
+          grid-area: press;
+          
+          .news-items {
+            @include make-grid(3);          
+          }
+        }
+      }
+
+       @include bp(0, s) {      
+        .news-items {
+            > div {
+              @include space($direction: bottom);
+            }          
+        }
+      }
+      .recent-posts {
+        
+        @include bp(0, s) {
+          > div {
+            @include space($direction: bottom);
+          }
+        }
+        @include bp(m) {        
+          @include make-grid(2);
+        }
+        
+        .feed-date {
+          display: none;
+        }
+        
+        .blog-link {
+          @include bp(0, s) {
+            display: none;
+          }
+          @extend %medium-button;
+          display: inline-block;          
+          clear: both;
+        }
+      }
+      
+      .latest-resources {
+        .resources-container {
+          @extend %shadowed;
+          background: white;
+          @include space(padding, all);  
+          text-align: left;          
+          ul {
+            padding: 0;
+          }
+        }
+      }
+      
+      .news-items {
+        .news-item {
+          background: white;
+        }
+      }
+      
+      
+    }
+    
+    
+    // specific divs ... hopefully hs won't change the IDs!
+    
+    // manage employee issues feature and lead-in
+    #hs_cos_wrapper_widget_1559165919028,
+    #hs_cos_wrapper_widget_1559144937372 {
+      background: get-col(lightgray);
+    }
+    #hs_cos_wrapper_widget_1559165919028 {
+      @include slant(top);
+	  @include space(padding, bottom, 0);
+      
+      > span {
+        @extend %body-container;
+        h6 {
+          @extend %tight-box;
+        }
+      }
+
+    }
+
+    #hs_cos_wrapper_widget_1559144937372 {
+      @include space(padding, bottom, 3);      
+      .column-container {
+        background: white;      
+      }
+      .columns {
+        align-items: center;        
+      }
+    }
+    
+    .featured-customers-carousel > .container {
+      @include space(padding, bottom, 1);
+    }
+    
+    // dashboard
+    #hs_cos_wrapper_widget_1558468716448 {
+      background: get-col(lightgray);
+    }
+    
+    // recent blog posts etc.
+    
+    #hs_cos_wrapper_module_1558722933974116 {
+      h4 {
+        text-align: center;
+      }
+    }
+    
+
+    #section-2 {
+      background: get-col(lightgray);
+      @include slant($position: top, $direction: down);
+      
+    }    
+
+    // Industry recognition logos    
+    .recognition {
+      .columns-6 {
+//        grid-template-columns: repeat(3, 1fr);
+//        grid-row-gap: $gutter*3;
+      }
+    }
+    
+    // testimonial
+    
+    #hs_cos_wrapper_widget_1561992300328 {
+      margin-bottom: 90px;
+      
+      .zebra-alt .testimonial-container {
+        border-bottom: none;
+      }
+        
+
+    }
+    // best practice
+    #hs_cos_wrapper_widget_1558640038952 {
+      .media-section {
+        @extend %tight-box;
+        border: 2px solid red;
+      }
+    }
+    
+    
+  } // end body wrapper
+}

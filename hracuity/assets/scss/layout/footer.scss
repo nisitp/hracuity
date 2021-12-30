@@ -1,0 +1,225 @@
+.footer-container-wrapper {
+//  background: darken(get-col(lightgray), 10%);
+//  background-image: linear-gradient(170deg, #8AC442 0%, #4E98B8 48%, #265F82 100%);      
+  background-image: linear-gradient(180deg, #265F82 0%, #4E98B8 48%, #8AC442 100%);      
+  
+  body.front & {
+    @include slant(top);
+  }
+  margin-top: 0 !important;
+  
+  @include bp(m) {
+    @include space(padding, bottom, $gutter*2, $important: 1);
+  }
+    
+  .page-center {
+	  padding-bottom: 0 !important;
+  }
+
+  @at-root .has-cta .footer-container-wrapper {
+    // undo slant
+    clip-path: none;
+    @include space($type: padding, $direction: top, $amount: 0px, $important: 1);
+  }
+  
+  
+  .footer-bg {
+    background: transparent;
+  }
+  
+  
+  .footer-menu-container {
+    background: white;
+    @include space(padding, leftright, $gutter);            
+    
+    @include bp(m) {
+      @include space(padding, leftright, $gutter*2);                  
+    }
+  }
+  .footer-menu {
+    
+    @include bp(0, s) {
+      display: none !important;
+    }
+    
+   // width: 100vw;
+    @include space(padding, top, $gutter);
+    background: white;
+    
+    ul li a {
+      color: get-col(black);
+    }
+    
+    // TBD desktop only
+    .hs-menu-wrapper > ul {
+      width: 100%;
+
+
+      @include set-sizes(s);
+      
+      @include make-grid($cols: 3, $gap: $gutter);
+      @include bp(l) {
+        grid-template-columns: repeat(6, 1fr);
+      }
+      &::before {
+        display: none;
+      }
+      
+      > li {
+        line-height: 2em;
+        > a {
+          font-weight: getFontParam(weights, medium);
+        }                
+        
+      }
+      
+      // all links:      
+      a {
+        &:hover {
+          color: black;
+          text-decoration: underline;
+        }
+      }
+      
+    }
+  }
+  
+}
+
+// changes that should affect everything
+.footer-container-wrapper {  
+  .footer-form {
+	
+  	@include space(padding, topbottom, 1);
+      h2, h3 {
+        @extend %h4;
+        color: white;
+      }
+    
+    // undo left/right stuff from original stylesheets
+    form div {
+      float: none;
+      margin: inherit;
+    }
+    
+    form label * {
+	    color: white;
+    }
+    
+    form input, form select {
+      border: none; 
+    }
+    form input[type=checkbox] {
+		  border-color: white;
+  		&:checked::before {
+  			color: white;
+  		}
+
+    }
+    
+    form .hs-error-msgs label {
+      color: white; 
+    }
+    
+    form div.hs_newsletter_signup {
+      @include space($direction: top);
+    }
+    
+    form div.legal-consent-container * {
+      @include set-sizes(xs);
+      line-height: 1em;
+      font-style: italic;
+      @include space($direction: bottom);
+    }
+    
+    form div input[type=submit] {
+      @extend %medium-button;  
+    }
+  }
+  .footer-bottom {
+    
+    &-links {
+      ul {
+        margin: 0; padding: 0;
+      }
+      ul li {
+       display: inline-block; 
+       @include set-sizes(xs);
+       line-height: 28px; // to match to social nav
+       &::after {
+         content: " | ";
+       }  
+       &:last-child::after {
+         content: "";
+       }
+       
+       a {
+         color: get-col(black);     
+       }
+      }
+    }
+    
+    @include bp(0, s) {
+      > .row-fluid-wrapper > .row-fluid {
+        display: flex;
+        flex-direction: column;
+        @include space(padding, $direction: topbottom);
+  
+        .footer-social-links {
+          order: 1;
+          a {
+            color: get-col(orange);
+          }
+        }
+        .footer-bottom-links {
+          order: 2;
+          text-align: center;
+        }
+      }
+    }
+    
+    @include bp(s) {
+        .footer-bottom-links, .footer-social-links {
+          position: relative; top: $gutter*1.5;
+          color: white;
+          a { 
+            color: white; 
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+
+    }
+    
+    .footer-social-links {      
+      text-align: center;
+      
+      @include bp(m) {
+        .social {
+          float: right;      
+        }
+      }
+      
+      .social li a {
+        img { display: none; }
+        color: white;
+        &:hover {
+          color: get-col(orange);
+        }
+        
+        font-size: 20px;
+        &[href*=facebook] {
+          @include icon(facebook-f, $type:b);
+        }
+        &[href*=twitter] {      
+          @include icon(twitter, $type:b);        
+        }
+        &[href*=linked] {      
+          @include icon(linkedin-in, $type:b);        
+        }      
+      }
+      
+    }
+  }
+}

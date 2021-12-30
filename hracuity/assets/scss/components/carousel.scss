@@ -1,0 +1,47 @@
+html body .featured-customers-carousel {
+
+	text-align: center;
+	
+  .container {
+    @extend %fixWidth;
+    
+    .slick-slide-inner-wrapper {
+      
+      img {
+        max-height: 80px;
+      }
+
+//      @include bp(0,s) {
+        img {
+          max-width: 80%;
+        }
+//      }
+    }
+  }
+  .slick-arrow {
+    @include icon(chevron-right);
+    color: get-col(orange);          
+    font-size: 0;
+    
+    &::before {
+      font-family: "Font Awesome 5 Pro"; // override slick family
+      color: get-col(orange);      
+      font-size: 20px;
+      
+    }
+    
+    &.slick-prev {
+  
+      @include icon(chevron-left);
+      opacity: 1;
+      width: 20px;
+      height:20px;
+    }
+  }
+}
+
+html body .carousel .carousel-item {
+  h3 {
+    @extend %h6;
+  }
+}
